@@ -301,3 +301,66 @@ exec RegPro12 @EmailAddress
 exec RegPro13 @Gender
 exec RegPro14 @BirthDate
 exec RegPro15 @UserName,@Password,@FirstName,@LastName,@Address,@Country,@EmailAddress,@Gender,@BirthDate
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+go
+create table RegistrationTable
+(RegistrationColumn nvarchar(1000))
+go
+insert into RegistrationTable
+values
+(
+'
+--INSTRACTIONS:
+--1. Copy the text below to the query
+--2. Insert your information
+--3. Select all and press F5
+
+
+--FOR AN INVALID REGISTRATION - TRY THIS
+
+Exec RegistrationProcess
+@UserName     = ''TigerKing'',
+@Password     = ''                     '',
+@FirstName    = ''                     '',
+@LastName     = ''                     '',
+@Address      = ''                     '',
+@Country      = '' Execute CountryList '',
+@EmailAddress = ''abc2gmail.com'',
+@Gender       = '' Execute GenderList  '',
+@BirthDate    = ''2015-01-01'' 
+
+
+
+--FOR A VALID REGISTRATION - TRY THIS
+
+Exec RegistrationProcess
+@UserName     = ''OurFirstRealUser'',
+@Password     = ''Abc!@2345'',
+@FirstName    = ''Israel'',
+@LastName     = ''Israeli'',
+@Address      = ''Vienna'',
+@Country      = ''Austria'',
+@EmailAddress = ''isr@ael.co.il'',
+@Gender       = ''Female'',
+@BirthDate    = ''2000-01-01'' 
+
+
+
+')
+
+
+
+go
+create procedure Registration
+as
+declare @PrintRegistration nvarchar(1000)
+
+set @PrintRegistration = (select * from RegistrationTable)
+
+print @PrintRegistration
+
+
+
+
+go
