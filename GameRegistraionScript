@@ -2,7 +2,7 @@ CREATE DATABASE CatchTheFishDB
 go
 USE CatchTheFishDB
 go
--------- Random number functions-----------------------------------------
+-------- Random number functions-----------------------------------------<span style="color: green"> Some green text </span>
 --1
 create view [dbo].[vv_getRANDValue]
 as
