@@ -1,0 +1,170 @@
+create proc LoginProcess
+(
+@username nvarchar(20),
+@Password nvarchar(20)
+)
+--when @LogStatus = 0 it means that the user is NOT logged in.
+--when @LogStatus = 1 it means that the user already logged in.
+--when @LogStatus = 2 it means that the user locked (3 failed login attempts).
+as
+declare 
+@LoginFailure int,
+@LogStatus int
+
+set @LoginFailure = (select LoginFailure from users where UserName = @username)
+set @LogStatus = (select LogStatus from users where UserName = @username)
+
+if not exists
+			(SELECT username FROM users
+			WHERE username = @username)
+				print ('The username does not exists, please register')
+
+	
+		else if @LogStatus = 1 print 'User already logged in'
+			else if exists
+					(select username, [password] from Users
+					where UserName=@username and Password=@Password)
+			begin 
+				
+print 
+('
+--Login successful ! ! !
+
+--INSTRACTIONS:
+--1. Copy the command below 
+--2. Paste in the query
+--3. Choose fisher name
+--4. Select all and run (F5)
+
+
+
+--FOR AN UNSUCCESSFUL START - TRY THIS
+
+Execute StartGame
+@username = ''WrongUserName'',
+@FisherName = ''WrongFisherName''
+
+
+
+--FOR A SUCCESSFUL START - TRY THIS
+
+Execute StartGame
+@username = ''OurFirstRealUser'',
+@FisherName = ''Avi/Moshe/Shir (Choose one name)''
+
+
+
+--OR
+
+Select * from ViewScoreList
+
+
+
+
+'
+)
+
+update Users  set LogStatus = 1 where username = @username
+				set @LoginFailure = 0 
+
+			end
+	else if @LoginFailure < 2 
+			begin
+				
+				SET
+					@LoginFailure = @LoginFailure + 1
+				
+print (
+'
+The username and password do not match ! !
+
+Login attempt: '+ cast(@LoginFailure as nvarchar(10)) +' .
+The account will be locked after 3 failed attempts.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+')
+
+
+
+
+update users set Loginfailure = @LoginFailure where username = @username
+
+			end
+		else
+			begin
+print(
+'
+--User is locked, please contact technical support.
+
+
+--To contact technical support - Run the command below:
+
+
+--TRY ME FIRST ! 
+
+Execute CallTechSupport
+@UserName = ''WrongUserName'',
+@EmailAddress = ''WrongEmailAddress''
+
+
+
+--TRY ME SECOND ! !
+
+Execute CallTechSupport
+@UserName = ''OurFirstRealUser'',
+@EmailAddress = ''isr@ael.co.il''
+
+
+
+')
+				set @LogStatus = 2
+			end
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+go
+create table LoginMenu
+(LoginMenu2 nvarchar(1000))
+go
+insert into LoginMenu
+values
+('
+--INSTRACTIONS:
+--1. Copy the text below
+--2. Paste into the query
+--3. Insert your login info
+--4. Select all and press F5
+
+EXECUTE LoginProcess
+@UserName = ''YourUserNameHere'',
+@Password = ''YourPasswordHere'' 
+
+
+')
+
+
+go
+create procedure LOGIN
+as
+declare @PrintLogin nvarchar(1000)
+
+set
+@PrintLogin = (select * from LoginMenu)
+
+print
+@PrintLogin
