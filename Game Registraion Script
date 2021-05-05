@@ -364,3 +364,12 @@ print @PrintRegistration
 
 
 go
+---------------------------------------------------------------------------
+
+Create View ViewScoreList
+as
+select UserName, Points
+from Users
+
+
+Go
