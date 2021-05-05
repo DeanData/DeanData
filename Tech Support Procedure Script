@@ -1,0 +1,37 @@
+create procedure CallTechSupport
+(@UserName nvarchar(30),
+@EmailAddress nvarchar(50)
+)
+as
+declare 
+@LogReset int,
+@NewPassword nvarchar(20),
+@Pass uniqueidentifier, 
+@Word uniqueidentifier
+
+
+if not exists (select username, EmailAddress from users where username = @UserName and EmailAddress = @EmailAddress) print 'User name and Email do not match. Try again'
+else
+begin
+set @LogReset = (select LogStatus from Users where USERNAME = @UserName)
+set @LogReset = 0
+set @Pass = NEWID()  
+set @Word = NEWID()  
+set @NewPassword = cast((CONVERT(varchar(255), @Pass)) as nvarchar(5)) + lower(cast((CONVERT(varchar(255), @Word)) as nvarchar(5)))
+PRINT 
+'
+We have reset your login attempts to 0 and generated a new password.
+
+Your new password is: ' + @NewPassword + '
+
+Please try to login again.
+
+
+'
+
+update users set [Password] = @NewPassword where username = @UserName
+
+end
+
+
+Go
