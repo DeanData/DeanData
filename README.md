@@ -40,7 +40,7 @@ Note: Some of the tables we have created include only one column and one row, an
 (Examples for this type of procedures: 1. ‘Login’  2. ‘Open_CatchTheFish’ 
 
 
-Table 1 – Users
+**Table 1 – Users**
 This table contains information of registered users.
 
 ![image](https://user-images.githubusercontent.com/83536999/117186943-0e5c2280-ade4-11eb-9266-f2eabf035f95.png)
@@ -57,27 +57,27 @@ This table contains information of registered users.
 
 ![image](https://user-images.githubusercontent.com/83536999/117185032-12874080-ade2-11eb-9982-b929104e5ff0.png)
 
-Table 2 - PermittedCountries
+**Table 2 - PermittedCountries**
 A static table that contains the list of countries that the is available in.
 
 ![image](https://user-images.githubusercontent.com/83536999/117205419-479f8d00-adfa-11eb-92b2-73d2ef1b6f46.png)
 
-Table 3 - GenderListOptions
+**Table 3 - GenderListOptions**
 A static table that contains the gender list.
 
 ![image](https://user-images.githubusercontent.com/83536999/117205456-538b4f00-adfa-11eb-8037-9f0c8d00157d.png)
 
-Table 4 – LoginMenu
+**Table 4 – LoginMenu**
 A static table, with only one column and one row, in order to be a transition path to login to the game. 
 
 ![image](https://user-images.githubusercontent.com/83536999/117205475-59813000-adfa-11eb-8327-c4abc4bf4a8e.png)
 
-Table 5 - MainMenu 
+**Table 5 - MainMenu **
 A static table, with only one value, in order to be a transition path to the menu of the game, where the user need to choose whether to login to the game or to register
 
 ![image](https://user-images.githubusercontent.com/83536999/117205495-5ede7a80-adfa-11eb-81c5-88df07fa3d99.png)
 
-Table 6 - RegistrationTable
+**Table 6 - RegistrationTable**
 A static table, with only one value, in order to be a transition path to registration.
 
 ![image](https://user-images.githubusercontent.com/83536999/117205516-656cf200-adfa-11eb-9dfc-bf7d744380d9.png)
@@ -141,29 +141,29 @@ Ensures compliance with all required password conditions - The password is longe
 
 ![image](https://user-images.githubusercontent.com/83536999/117205852-d14f5a80-adfa-11eb-8744-f40c68227164.png)
 
-•	Second procedure - ‘LoginProcess’ - combines several of checks for Login:
+**•	Second procedure - ‘LoginProcess’ - combines several of checks for Login:**
       o	Checks if the user already registered and the username and password are correct.
       o	Counting the numbers of Log-in failures. In the 3rd failed attempt the procedure is instructed to lock the account.
       o	The procedure verifies that the user is not login and prevents him from double login at the same time.
 
 ![image](https://user-images.githubusercontent.com/83536999/117205976-f6dc6400-adfa-11eb-90ea-f17dc9d7f44e.png)
 
-•	Third procedure – LOGIN:
+**•	Third procedure – LOGIN:**
  made from an aesthetic reason (see explanation in page 2) to connect the user directly to ‘Login menu’ table.
 
 ![image](https://user-images.githubusercontent.com/83536999/117205996-fb088180-adfa-11eb-8ecb-a9765cae0c93.png)
  
- Fourth procedure- ‘CallTechSupport’ procedure:
+**Fourth procedure- ‘CallTechSupport’ procedure:**
 Allows you to reset your password when the account is blocked. Generates a new and strong password and replaces it with the old password in the a ‘Users’ table.
 
 ![image](https://user-images.githubusercontent.com/83536999/117206019-022f8f80-adfb-11eb-86bb-5784fc37434b.png)
 
-•	Fifth procedure - ‘Open_CatchTheFish’ procedure:
+**Fifth procedure - ‘Open_CatchTheFish’ procedure:**
 Made from an aesthetic reason. Prints the start menu for the game. 
 
 ![image](https://user-images.githubusercontent.com/83536999/117206046-078cda00-adfb-11eb-9bc7-18a2cc0df3bf.png)
 
-Sixth procedure - ‘Start_Game_Alreadi_Yalla_Kvar’:
+**Sixth procedure - ‘Start_Game_Alreadi_Yalla_Kvar’:**
     o	Execute the game - to start playing the user must choose a fisherman from the list - Avi, Shir or Moshe.
     o	In a fair draw in each round, one of the three fishermen wins:
     o	If the user’s fisherman wins, the user gets 1000 points. 
@@ -171,7 +171,7 @@ Sixth procedure - ‘Start_Game_Alreadi_Yalla_Kvar’:
 
 ![image](https://user-images.githubusercontent.com/83536999/117206061-0e1b5180-adfb-11eb-82df-7b0ffce85e67.png)
 
-•	Seventh procedure - ‘StartGame’:
+**Seventh procedure - ‘StartGame’:**
 The official procedure that checks the compliance with the conditions for starting a game (Username and FisherName are valid) and then calls for a ‘Start_Game_Alreadi_Yalla_Kvar’ procedure.
 
 ![image](https://user-images.githubusercontent.com/83536999/117206109-196e7d00-adfb-11eb-91c4-fa41005ca3b2.png)
