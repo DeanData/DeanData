@@ -1,0 +1,162 @@
+------------------------------------------------------Main Menu Table With Insstructions------------------------
+create table MainMenu
+([Main Menu] nvarchar(1000))
+go
+insert into MainMenu
+values
+('
+--INSTRACTIONS:
+--1. Copy the command of the desired option
+--2. Paste into the query
+--3. Select the command and press F5
+
+
+Execute LOGIN
+Execute REGISTRATION
+
+
+')
+
+go
+
+----------------------------------------------------------------------------
+
+create procedure Open_CatchTheFish
+as
+declare @PrintMenu nvarchar(1000)
+set @PrintMenu = (select * from MainMenu)
+print @PrintMenu
+GO
+
+
+
+------------------------------------------------------Start Game Procedure------------------------
+create procedure Start_Game_Alreadi_Yalla_Kvar
+(
+@username NvarChar(30),
+@FisherName NvarChar(30)
+)
+as
+declare 
+@FishTurn int,
+@Fisher2 nvarchar(10),
+@Fisher3 nvarchar(10),
+@FishStepsPerTurn1 nvarchar(240),
+@FishStepsPerTurn2 nvarchar(240),
+@FishStepsPerTurn3 nvarchar(240),
+@points int,
+@X int
+declare @FishShape nvarchar(20) = ' ><(())>'
+
+
+set @points = (select points from users where username = @username)
+set @FishStepsPerTurn1 = ''
+set @FishStepsPerTurn2 = '' 
+set @FishStepsPerTurn3 = '' 
+set @FishTurn = 1
+set @X = 0
+declare @RandWin int = cast(rand()*(3)+1 as int)
+
+if @FisherName = 'Avi'   begin set @FisherName = 'Avi'  set @Fisher2 = 'Moshe'  set  @Fisher3 = 'Shir' set @X = 1 end
+else if @FisherName = 'Moshe'  begin set @FisherName = 'Moshe' set @Fisher2 = 'Avi' set @Fisher3 = 'Shir' set @X = 1 end 
+else if @FisherName = 'Shir'  begin set @FisherName = 'Shir' set @Fisher2 = 'Moshe' set @Fisher3 = 'Avi' set @X = 1 end 
+
+if @x != 1 print 'Fisher name invalid'
+else
+while @FishTurn < 11 
+	begin
+		print ('----------------------------------------------------------------------------------------------------')
+		print ( concat (@FisherName , ' : ' , @FishStepsPerTurn1 , @FishShape) )
+		print ( concat (@Fisher2 , ' : ' , @FishStepsPerTurn2 , @FishShape) )
+		print ( concat (@Fisher3 , ' : '  , @FishStepsPerTurn3 , @FishShape) )
+		set @FishStepsPerTurn1 =  ( concat (@FishStepsPerTurn1 , (SUBSTRING('                                        a',1,cast((rand()*(14)-1) as int))) ) )
+		set @FishStepsPerTurn2 =  ( concat (@FishStepsPerTurn2 , (SUBSTRING('                                        a',1,cast((rand()*(14)-1) as int))) ) )
+		set @FishStepsPerTurn3 =  ( concat (@FishStepsPerTurn3 , (SUBSTRING('                                        a',1,cast((rand()*(14)-1) as int))) ) )
+		set @FishTurn = @FishTurn + 1
+		while @FishTurn = 11
+				if @RandWin = 1
+					begin
+					
+print (
+'$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+'
++
+@FisherName + ' Ya king/queen we have a winner!! you earn a $1,000 !!
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+					
+
+
+
+
+
+
+					
+					
+					
+					')
+					 
+					 update users set points = (@points + 1000) where username = @username 
+					break
+					end
+				else
+					begin
+					  
+print 
+('
+----------------------------------------------------------------------------------------------------
+
+ Too bad! this time you lose, You will have to pay us $100 
+
+----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+')
+	
+					
+				update users set points = (@points - 100) where username = @username 	
+					break
+					end
+	end
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+go
+
+
+
+
+create procedure StartGame
+(
+@UserName nvarchar(30),
+@FisherName nvarchar(30)
+)
+as
+declare
+@LogS int
+
+set @LogS = (select LogStatus from Users where UserName = @UserName)
+
+if @FisherName not in ('Avi','Moshe','Shir') print 'Fisher name invalid. Please choose one of the following and try again: Avi / Moshe / Shir '
+	else if @LogS != 1 print 'User is not logged in.'
+		else if @UserName != (select username from Users where username = @UserName) print 'User name is incorrect'
+			else 
+				execute Start_Game_Alreadi_Yalla_Kvar 
+				@UserName = @UserName, 
+				@FisherName = @FisherName
+
+
+go
