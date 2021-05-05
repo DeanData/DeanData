@@ -30,14 +30,21 @@ Note: Some of the tables we have created include only one column and one row, an
 Table 1 – Users
 This table contains information of registered users.
 
+![image](https://user-images.githubusercontent.com/83536999/117186943-0e5c2280-ade4-11eb-9266-f2eabf035f95.png)
+
 Explanation about the main columns:
+
 • UserID – entered automatically according to the number of players(@identity), the first user starts with 1 followed by the increments of 1 (e.g. 1, 2, 3…). 
+
 • Username, Password, FirstName, LastName, Country, EmailAddress – these columns are mandatory to contain values when a user registers.
+
 • LoginFailure- indicates the user’s number of failed attempts to login his account, the column gets a default value – 0, and lock the account after 3 failed attempts. 
+
 • LogStatus - column’s default value is “0”
    o	when LogStatus is “0” it means that the user is logged out
    o	when LogStatus is “1” it means that the user is logged in
    o	when Logstatus is “2” it means that the account locked (after 3 consecutive failed login attempts). 
+
 • Columns Country and Gender are mandatory as well – in order to register a user must choose the values listed in the tables: PermittedCountries and GenderListOptions in the database.
 
 ![image](https://user-images.githubusercontent.com/83536999/117185032-12874080-ade2-11eb-9982-b929104e5ff0.png)
