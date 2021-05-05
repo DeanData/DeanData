@@ -4,8 +4,12 @@
 
 ## Introduction
 
-**The project’s goal is to build a script for a computer game named "Catch the Fish".**<br/>
+**The following script is an installation for a fun SQL game called Catch The Fish<br/>
+In the game, you chose a fisherman and compete against two computer fishermen.<br/>
+If you win you earn 1000 points, if you lose then 100 points are deducted from your score.**<br/>
 <br/>
+
+
 The database includes the following processes:<br/>
 •	Registration<br/>
 •	Login<br/>
