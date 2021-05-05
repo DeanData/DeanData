@@ -10,7 +10,7 @@ If you win you earn 1000 points, if you lose then 100 points are deducted from y
 <br/>
 
 
-The database includes the following processes:<br/>
+**The database includes the following processes:<br/>**
 •	Registration<br/>
 •	Login<br/>
 •	The actual game<br/>
