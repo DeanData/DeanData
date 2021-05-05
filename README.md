@@ -72,7 +72,7 @@ A static table, with only one column and one row, in order to be a transition pa
 
 ![image](https://user-images.githubusercontent.com/83536999/117205475-59813000-adfa-11eb-8327-c4abc4bf4a8e.png)
 
-**Table 5 - MainMenu **<br/>
+**Table 5 - MainMenu** <br/>
 A static table, with only one value, in order to be a transition path to the menu of the game, where the user need to choose whether to login to the game or to register
 
 ![image](https://user-images.githubusercontent.com/83536999/117205495-5ede7a80-adfa-11eb-81c5-88df07fa3d99.png)
