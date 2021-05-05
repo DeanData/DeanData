@@ -100,9 +100,9 @@ This chapter concentrates on procedures in the database.<br/>
 Each procedure describes one process that the player can choose as part of the game: Registration, login, game, and technical support.
  
 **•	First procedure - Registration procedures logic – created with 3 levels of procedures:**<br/>
-o	‘RegPro’ (1-14) procedures – A set of processes that make sure that all the conditions for creating a user have passed successfully.
-o	‘RegPro’ 15 procedure – when all the conditions from ‘RegPro’ (1-14) procedures are met, it will insert the user information to the Users table.
-o	‘RegistraionProcess’ – high level procedure that calls for all ‘RegPro’ (1-15) procedures.
+o	‘RegPro’ (1-14) procedures – A set of processes that make sure that all the conditions for creating a user have passed successfully.<br/>
+o	‘RegPro’ 15 procedure – when all the conditions from ‘RegPro’ (1-14) procedures are met, it will insert the user information to the Users table.<br/>
+o	‘RegistraionProcess’ – high level procedure that calls for all ‘RegPro’ (1-15) procedures.<br/>
 
 •	‘RegPro1’: Checks if the username exists. If there is a user with the same username, the procedure will print a suggested username.
 
