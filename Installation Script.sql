@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
 --######################################################################
 
 --            WELCOME TO CATCH THE FISH INSTALLATION PROCESS
@@ -17,22 +6,6 @@
 --             Instractions: Press 'Ctrl + A' and then 'F5'
 
 --######################################################################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 CREATE DATABASE CatchTheFishDB
 go
@@ -60,7 +33,6 @@ return @Random
 end
 GO
 ------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------
 go
 create table PermittedCountries
 (CountryID int not null primary key,
@@ -76,7 +48,7 @@ create procedure CountryList
 as
 select Country from PermittedCountries
 go
--------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------
 create table GenderListOptions
 (GenderID int not null primary key,
 Gender nvarchar(30))
@@ -90,7 +62,7 @@ create procedure GenderList
 as
 select Gender from GenderListOptions
 go
--------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 --- Users table
 create TABLE Users
@@ -118,7 +90,7 @@ values ('TigerKing','Exotic123','Joe','Exotic','Tel Aviv','Israel','je@gmail.com
 go
 
 
--------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------
 -- USER NAME RegPro1
 create procedure RegPro1 (@UserName nvarchar(20))
 as
@@ -136,25 +108,25 @@ go
 -- PASSWORD - more than 7 characters -RegPro2
 create procedure RegPro2 (@Password nvarchar(20))
 as
-											if len (@password) < 7 print '- The password must contain at least 7 characters.'
+		if len (@password) < 7 print '- The password must contain at least 7 characters.'
 go
 
 -- PASSWORD - cannot contain the username in it - RegPro3
 create procedure RegPro3 (@Password nvarchar(20),@UserName nvarchar(20))
 as						
-											 if @password like '%' + @username + '%' print '- The password cannot contain the username in it.'						
+		if @password like '%' + @username + '%' print '- The password cannot contain the username in it.'						
 go
 
 -- PASSWORD - cannot contain the word Password - RegPro4
 create procedure RegPro4 (@Password nvarchar(20))
 as
-												 if @password like '%password%' print '- Tha password cannot contain the word Password.'
+		if @password like '%password%' print '- Tha password cannot contain the word Password.'
 go
 
 -- PASSWORD - -RegPro5 - lowercase letter
 create procedure RegPro5 (@Password nvarchar(20))
 as
-												 if @password not LIKE '%[a-z]%' COLLATE Latin1_General_BIN print '- Tha password must contain a lowercase letter.'
+		if @password not LIKE '%[a-z]%' COLLATE Latin1_General_BIN print '- Tha password must contain a lowercase letter.'
 									
 												
 go
@@ -162,60 +134,60 @@ go
 -- PASSWORD - -RegPro6 - CAPITAL LETTER
 create procedure RegPro6 (@Password nvarchar(20))
 as
-												 if @password not LIKE '%[A-Z]%' COLLATE Latin1_General_BIN  print '- Tha password must contain a capital letter.'
+		if @password not LIKE '%[A-Z]%' COLLATE Latin1_General_BIN  print '- Tha password must contain a capital letter.'
 											
 go
 
 -- PASSWORD - -RegPro7 - digit [0123456789]
 create procedure RegPro7 (@Password nvarchar(20))
 as
-												 if @password not like '%[0-9]%'  print '- Tha password must contain a digit (0-9).'
+		if @password not like '%[0-9]%'  print '- Tha password must contain a digit (0-9).'
 											
 go
 
 -- FIRST NAME - not null -RegPro8
 create procedure RegPro8 (@FirstName nvarchar(20))
 as
-					if @FirstName is null print '- First name required'
+		if @FirstName is null print '- First name required'
 go
 
 -- LAST NAME - not null - RegPro9
 create procedure RegPro9 (@LastName nvarchar(20))
 as
-							 if @LastName is null print '- Last name required'
+		if @LastName is null print '- Last name required'
 go
 
 -- ADDRESS - not null - RegPro10
 create procedure RegPro10 (@Address nvarchar(50))
 as
-						 if @Address is null print '- Address required'				
+		if @Address is null print '- Address required'				
 go
 
 -- COUNTRY - not null - RegPro11
 create procedure RegPro11 (@Country nvarchar(20))
 as		
-							 if @Country is null print '- Country required'
-								else if @Country not in (select country from PermittedCountries) print '- We are sorry, the game is currently unavailable in your country. Choose country from the list '
+		if @Country is null print '- Country required'
+				else if @Country not in (select country from PermittedCountries) print '- We are sorry, the game is currently unavailable in your country. Choose country from the list '
 go 
 
 -- EMAIL - valid email address - RegPro12
 create procedure RegPro12 (@EmailAddress nvarchar(40))
 as			
-						if @EmailAddress not like ('%@%') print '- Email address invalid'
+		if @EmailAddress not like ('%@%') print '- Email address invalid'
 go 
 
 -- GENDER - not null - RegPro13
 create procedure RegPro13 (@Gender nvarchar(20))
 as
-						 if @Gender = null print '- Gender required'
-						 else if @Gender not in (select gender from GenderListOptions) print '- Invalid gender '
+		if @Gender = null print '- Gender required'
+			else if @Gender not in (select gender from GenderListOptions) print '- Invalid gender '
 go
 
 -- BIRTHDATE - must be 18 years old or older - RegPro14
 create procedure RegPro14 (@BirthDate datetime)
 as
-							 if 18 > DATEDiff(yyyy,@BirthDate,getdate()) print '- Must be 18 years old or older :('
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+			if 18 > DATEDiff(yyyy,@BirthDate,getdate()) print '- Must be 18 years old or older :('
+-----------------------------------------------------------------------------------------------------------------
 go
 
 -- All details together - RegPro15
