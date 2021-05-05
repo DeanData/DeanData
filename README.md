@@ -37,10 +37,10 @@ Note: Some of the tables we have created include only one column and one row, an
 
 ![image](https://user-images.githubusercontent.com/83536999/117184743-bcb29880-ade1-11eb-8080-98bffaa27faf.png)
 
-(Examples for this type of procedures: 1. ‘Login’  2. ‘Open_CatchTheFish’ 
+(Examples for this type of procedures: 1. ‘Login’  2. ‘Open_CatchTheFish’) 
 
 
-**Table 1 – Users**
+**Table 1 – Users**<br/>
 This table contains information of registered users.
 
 ![image](https://user-images.githubusercontent.com/83536999/117186943-0e5c2280-ade4-11eb-9266-f2eabf035f95.png)
@@ -57,27 +57,27 @@ This table contains information of registered users.
 
 ![image](https://user-images.githubusercontent.com/83536999/117185032-12874080-ade2-11eb-9982-b929104e5ff0.png)
 
-**Table 2 - PermittedCountries**
+**Table 2 - PermittedCountries**<br/>
 A static table that contains the list of countries that the is available in.
 
 ![image](https://user-images.githubusercontent.com/83536999/117205419-479f8d00-adfa-11eb-92b2-73d2ef1b6f46.png)
 
-**Table 3 - GenderListOptions**
+**Table 3 - GenderListOptions**<br/>
 A static table that contains the gender list.
 
 ![image](https://user-images.githubusercontent.com/83536999/117205456-538b4f00-adfa-11eb-8037-9f0c8d00157d.png)
 
-**Table 4 – LoginMenu**
+**Table 4 – LoginMenu**<br/>
 A static table, with only one column and one row, in order to be a transition path to login to the game. 
 
 ![image](https://user-images.githubusercontent.com/83536999/117205475-59813000-adfa-11eb-8327-c4abc4bf4a8e.png)
 
-**Table 5 - MainMenu **
+**Table 5 - MainMenu **<br/>
 A static table, with only one value, in order to be a transition path to the menu of the game, where the user need to choose whether to login to the game or to register
 
 ![image](https://user-images.githubusercontent.com/83536999/117205495-5ede7a80-adfa-11eb-81c5-88df07fa3d99.png)
 
-**Table 6 - RegistrationTable**
+**Table 6 - RegistrationTable**<br/>
 A static table, with only one value, in order to be a transition path to registration.
 
 ![image](https://user-images.githubusercontent.com/83536999/117205516-656cf200-adfa-11eb-9dfc-bf7d744380d9.png)
@@ -96,10 +96,10 @@ Vv_getRANDValue - A view has been created to use the function
 
 ## Stored Procedures
 
-This chapter concentrates on procedures in the database.
+This chapter concentrates on procedures in the database.<br/>
 Each procedure describes one process that the player can choose as part of the game: Registration, login, game, and technical support.
  
-•	First procedure - Registration procedures logic – created with 3 levels of procedures:
+**•	First procedure - Registration procedures logic – created with 3 levels of procedures:**<br/>
 o	‘RegPro’ (1-14) procedures – A set of processes that make sure that all the conditions for creating a user have passed successfully.
 o	‘RegPro’ 15 procedure – when all the conditions from ‘RegPro’ (1-14) procedures are met, it will insert the user information to the Users table.
 o	‘RegistraionProcess’ – high level procedure that calls for all ‘RegPro’ (1-15) procedures.
