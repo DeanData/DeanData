@@ -4,15 +4,16 @@
 
 ## Introduction
 
-The project’s goal is to build a script for a computer game named "Catch the Fish".
-The database includes the following processes:
-•	Registration
-•	Login
-•	The actual game
-•	Score management
-•	Technical support
-This document describes the system’s architecture and the working assumptions we have created and followed by.
-The database includes tables, functions, views, and procedures.
+**The project’s goal is to build a script for a computer game named "Catch the Fish".**<br/>
+<br/>
+The database includes the following processes:<br/>
+•	Registration<br/>
+•	Login<br/>
+•	The actual game<br/>
+•	Score management<br/>
+•	Technical support<br/>
+This document describes the system’s architecture and the working assumptions we have created and followed by.<br/>
+The database includes tables, functions, views, and procedures.<br/>
 
 
 ## Tables
@@ -32,7 +33,7 @@ This table contains information of registered users.
 
 ![image](https://user-images.githubusercontent.com/83536999/117186943-0e5c2280-ade4-11eb-9266-f2eabf035f95.png)
 
-Main columns explanation:<br/>
+**Main columns explanation:**<br/>
 • UserID – entered automatically according to the number of players(@identity), the first user starts with 1 followed by the increments of 1 (e.g. 1, 2, 3…). <br/>
 • Username, Password, FirstName, LastName, Country, EmailAddress – these columns are mandatory to contain values when a user registers.<br/>
 • LoginFailure- indicates the user’s number of failed attempts to login his account, the column gets a default value – 0, and lock the account after 3 failed attempts. <br/>
